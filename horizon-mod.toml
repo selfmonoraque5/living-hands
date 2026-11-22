@@ -1,0 +1,31 @@
+id = "living_hands"
+name = "Living Hands"
+version = "1.0.0"
+description = "Your first-person hands come alive: held items bob with your steps, drop into a sprint, dip when you land and breathe when you stand still; you swim, climb and glide with your arms, food is chewed, a drawn bow trembles, hits knock your hand back, every weapon and tool swings its own way, and your own arm holds what you carry. Every effect is adjustable."
+authors = ["selfmonoraque5"]
+license = "MIT"
+license_url = "https://github.com/selfmonoraque5/living-hands/blob/main/LICENSE"
+credits = "Inspired by first-person animation mods such as Punchy! and Hold My Items; none of their code or assets."
+homepage = "https://github.com/selfmonoraque5/living-hands"
+issues = "https://github.com/selfmonoraque5/living-hands/issues"
+api = "0.2"
+side = "client"
+capabilities = ["registries"]
+
+[native]
+game = "26.3"
+horizon = "2b77287de099c9316278ba7ac4d83590fdb7ef30"
+mixins = "e59da9094f0c2fdda6c627fe9eff22dec6a906f0"
+
+# The mod API can draw a model part in `render_hand`, but doesn't say which
+# texture is the player's skin, and the game draws the arm itself only for an
+# empty hand. The mod patches the game's own `hand_geometry` (frame_geometry.rs)
+# to read the skin; a later Horizon that changes it needs an update.
+[[native.mixin]]
+id = "skin"
+kind = "HEAD"
+target = "horizon_client::game::frame_geometry::Game<'_>::hand_geometry"
+helper = "src/mixins/skin.rs"
+bindings = [
+  { name = "game", ty = "&Game<'_>", value = "&*self" },
+]
