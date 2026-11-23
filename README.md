@@ -52,7 +52,7 @@ Options > Mods > Living Hands > **Config**. Each button steps through its values
    `%APPDATA%\horizon\horizon-native-mods`.
 3. In the launcher, open the Mods page and click **Build**. When it says **Up to date**, play.
 
-Made for Horizon **Nightly 2026-11-22 · 2b77287**. The arm needs one small game patch (see below), so it builds only
+Made for Horizon **Nightly 2026-11-22 · f1bb66f**. The arm needs one small game patch (see below), so it builds only
 on that exact Nightly.
 
 ## The game patch
